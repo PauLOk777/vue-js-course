@@ -1,0 +1,15 @@
+#custom_footer {
+  min-height: 100px;
+  position: relative;
+  background-color: #555555;
+}
+
+#custom_footer > span {
+  color: #f65261;
+  font-size: 18px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 50%;
+  top: 50%;
+}

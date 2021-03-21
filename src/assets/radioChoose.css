@@ -1,0 +1,32 @@
+.radio_choose label {
+  display: inline-block;
+  color: white;
+  padding: 10px 20px;
+  background-color: rgba(66, 66, 66, 0.3);
+  transition: all 0.3s;
+}
+
+.radio_choose label:first-of-type {
+  border-radius: 5px 0px 0px 5px;
+}
+
+.radio_choose label:last-child {
+  border-radius: 0px 5px 5px 0px;
+}
+
+.radio_choose input[type="radio"] {
+  display: none;
+}
+
+.radio_choose input[type="radio"]:checked + label {
+  background-color: #f65261;
+}
+
+.radio_choose_text {
+  color: white;
+  padding: 10px 30px 10px 0px;
+}
+
+.radio_choose {
+  display: inline-block;
+}
