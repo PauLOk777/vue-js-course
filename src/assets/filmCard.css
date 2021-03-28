@@ -1,0 +1,15 @@
+.card {
+  width: 18rem;
+  background-color: #232323!important;
+  border: none;
+}
+.card-body .card-text {
+  color: #555555;
+}
+.card-body .card-title {
+  color: #6e6e6e;
+}
+.card-body .card-title.border {
+  color: #6e6e6e;
+  border: 1px solid #555555!important;
+}

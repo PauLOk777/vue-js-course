@@ -1,0 +1,8 @@
+#logo > a {
+    color: #f65261;
+    font-size: 18px;
+}
+
+#logo > a:hover {
+    text-decoration: none;
+}

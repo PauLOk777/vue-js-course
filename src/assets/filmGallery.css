@@ -1,0 +1,10 @@
+.film_gallery {
+    width: 100%;
+    min-height: 600px;
+    background-color: #232323;
+    margin: 0;
+}
+
+.no_results_text {
+  color:white
+}

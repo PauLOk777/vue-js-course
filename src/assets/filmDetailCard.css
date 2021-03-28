@@ -1,0 +1,20 @@
+.rating-text {
+  color: #a1e66f;
+}
+
+.key_numbers {
+  font-size: 1.5rem;
+  color: #f65261;
+}
+
+.key_numbers + span {
+  color: #555555;
+}
+
+.card-details {
+  background-color: #232323;
+}
+
+.card-detail-text {
+  color: white;
+}
