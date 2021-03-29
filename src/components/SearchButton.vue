@@ -1,11 +1,18 @@
 <template>
   <div class="search_button">
-    <input type="button" class="button" :value="text" @click="emitGetMovies" :style="`width: ${width_percentage}%`" />
+    <input
+      type="button"
+      class="button"
+      :value="text"
+      @click="emitGetMovies"
+      :style="`width: ${width_percentage}%`"
+    />
   </div>
 </template>
 
 <script>
 import "../assets/searchButton.css";
+import { PROGRAM_DATA } from "../core/constants";
 export default {
   name: "SearchButton",
   props: {
@@ -17,7 +24,7 @@ export default {
   },
   methods: {
     emitGetMovies: function() {
-      this.$emit("getMovies");
+      this.$emit(PROGRAM_DATA.EVENTS.GET_MOVIES);
     }
   }
 };

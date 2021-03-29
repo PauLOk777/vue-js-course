@@ -1,14 +1,14 @@
-import ResultControl from '../components/ResultControl.vue';
+import ResultControl from "../components/ResultControl.vue";
 
 export default {
-  title: 'ResultControl',
+  title: "ResultControl",
   component: ResultControl
 };
 
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { ResultControl },
-  template: '<result-control v-bind="$props" />',
+  template: '<result-control v-bind="$props" />'
 });
 
 export const DefaultResultControl = Template.bind({});

@@ -1,36 +1,36 @@
 <template>
-  <div class="row card-details">
-    <div class="col-4">
-      <img :src="imageUrl" class="card-img" />
+  <div class="card-details">
+    <div class="col-4 d-inline-block">
+      <img :src="card.imageUrl" class="card-img" />
     </div>
-    <div class="col-8">
+    <div class="col-8 d-inline-block">
       <div class="card-body">
         <div class="row">
           <div>
-            <h1 class="pr-3 card-detail-text">{{ title }}</h1>
+            <h1 class="pr-3 card-detail-text">{{ card.title }}</h1>
           </div>
           <div class="text-center">
             <span class="border rounded-circle p-2 h1 rating-text">
-              {{ rate }}
+              {{ card.rate }}
             </span>
           </div>
         </div>
         <div class="row p-1">
-          <p class="card-detail-text small">{{ genre }}</p>
+          <p class="card-detail-text small">{{ card.genre }}</p>
         </div>
         <div class="row p-1">
           <div class="pr-3">
-            <span class="key_numbers">{{ releaseDate }}</span>
-            <span class="small"> year</span>
+            <span class="key_numbers">{{ card.releaseDate }} </span>
+            <span class="small">{{ year }}</span>
           </div>
           <div class="pl-3">
-            <span class="key_numbers">{{ duration }} </span>
-            <span class="small">min</span>
+            <span class="key_numbers">{{ card.duration }} </span>
+            <span class="small">{{ minutes }}</span>
           </div>
         </div>
         <div class="row p-1">
           <p class="card-detail-text">
-            {{ description }}
+            {{ card.description }}
           </p>
         </div>
       </div>
@@ -40,37 +40,17 @@
 
 <script>
 import "../assets/filmDetailCard.css";
+import { I18N } from "../core/constants";
 export default {
   name: "FilmDetailCard",
   props: {
-    imageUrl: {
-      type: String,
-      require: true
-    },
-    title: {
-      type: String,
-      require: true
-    },
-    releaseDate: {
-      type: Number,
-      require: true
-    },
-    duration: {
-      type: Number,
-      require: true
-    },
-    genre: {
-      type: String,
-      require: true
-    },
-    description: {
-      type: String,
-      require: true
-    },
-    rate: {
-      type: Number,
-      require: true
-    }
+    card: Object
+  },
+  data() {
+    return {
+      year: I18N["EN"].YEAR,
+      minutes: I18N["EN"].MINUTES_SHORT
+    };
   }
 };
 </script>

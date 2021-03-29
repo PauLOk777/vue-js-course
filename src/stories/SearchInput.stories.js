@@ -1,14 +1,14 @@
-import SearchInput from '../components/SearchInput.vue';
+import SearchInput from "../components/SearchInput.vue";
 
 export default {
-  title: 'SearchInput',
+  title: "SearchInput",
   component: SearchInput
 };
 
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { SearchInput },
-  template: '<search-input v-bind="$props" />',
+  template: '<search-input v-bind="$props" />'
 });
 
 export const DefaultSearchInput = Template.bind({});

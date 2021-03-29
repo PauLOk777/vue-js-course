@@ -1,12 +1,21 @@
 <template>
-  <div class="result_contol">
+  <div class="result_control">
     <div class="row justify-content-between">
       <div class="bold_span col-6 align-self-center">
-        <span v-if="number_of_movies > 1">{{number_of_movies}} movies found</span>
-        <span v-else>{{number_of_movies}} movie found</span>
+        <div v-if="number_of_movies > 0">
+          <span class="movies-found"
+            >{{ number_of_movies }} {{ movies_found }}</span
+          >
+        </div>
       </div>
       <div class="col-6 text-right">
-        <radio-choose :first_option="first_option" :second_option="second_option" :options_name="options_name" />
+        <radio-choose
+          :first_option="first_option"
+          :first_option_value="first_option_value"
+          :second_option="second_option"
+          :second_option_value="second_option_value"
+          :options_name="options_name"
+        />
       </div>
     </div>
   </div>
@@ -14,8 +23,8 @@
 
 <script>
 import "../assets/resultControl.css";
-import RadioChoose from './RadioChoose.vue';
-
+import RadioChoose from "./RadioChoose.vue";
+import { I18N } from "../core/constants";
 export default {
   name: "ResultControl",
   components: { RadioChoose },
@@ -25,7 +34,15 @@ export default {
       type: String,
       require: true
     },
+    first_option_value: {
+      type: String,
+      require: true
+    },
     second_option: {
+      type: String,
+      require: true
+    },
+    second_option_value: {
       type: String,
       require: true
     },
@@ -33,6 +50,11 @@ export default {
       type: String,
       require: true
     }
+  },
+  data() {
+    return {
+      movies_found: I18N["EN"].MOVIES_FOUND
+    };
   }
 };
 </script>

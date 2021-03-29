@@ -1,23 +1,23 @@
-.result_contol {
+.result_control {
   min-height: 50px;
   padding: 15px 0px;
   background-color: #6e6e6e;
 }
 
-.result_contol > div {
+.result_control > div {
   margin-left: 10%;
   margin-right: 10%;
 }
 
-.result_contol > div > div:first-of-type {
+.result_control > div > div:first-of-type {
     padding-left: 0px;
 }
 
-.result_contol > div > div:last-of-type {
+.result_control > div > div:last-of-type {
     padding-right: 0px;
 }
 
-.bold_span > span {
+.bold_span span {
   color: white;
   font-weight: bold;
 }

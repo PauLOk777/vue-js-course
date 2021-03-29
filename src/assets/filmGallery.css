@@ -1,10 +1,16 @@
 .film_gallery {
-    width: 100%;
-    min-height: 600px;
-    background-color: #232323;
-    margin: 0;
+  width: 100%;
+  min-height: 600px;
+  background-color: #232323;
+  margin: 0;
+  padding-top: 50px;
 }
 
 .no_results_text {
-  color:white
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
 }
