@@ -1,14 +1,14 @@
-import SearchButton from '../components/SearchButton.vue';
+import SearchButton from "../components/SearchButton.vue";
 
 export default {
-  title: 'SearchButton',
+  title: "SearchButton",
   component: SearchButton
 };
 
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { SearchButton },
-  template: '<search-button v-bind="$props" />',
+  template: '<search-button v-bind="$props" />'
 });
 
 export const DefaultSearchButton = Template.bind({});

@@ -1,0 +1,19 @@
+#logo {
+  padding-top: 20px;
+}
+
+.glyphicon {
+  padding-top: 20px;
+}
+
+#card_details_page {
+  background-color: #232323;
+}
+
+.glyphicon > a {
+  color: #f65261;
+}
+
+.glyphicon > a:hover {
+  text-decoration: none;
+}

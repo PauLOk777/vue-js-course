@@ -1,11 +1,11 @@
 <template>
   <div class="huge_font_paragraph">
-    <p :style="`color: ${color}`">{{text}}</p>
+    <p :style="`color: ${color}`">{{ text }}</p>
   </div>
 </template>
 
 <script>
-import "../assets/hugeFontParagraph.css"
+import "../assets/hugeFontParagraph.css";
 export default {
   name: "HugeFontParagraph",
   props: {

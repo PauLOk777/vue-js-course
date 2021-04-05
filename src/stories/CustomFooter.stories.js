@@ -1,14 +1,14 @@
-import CustomFooter from '../components/CustomFooter.vue';
+import CustomFooter from "../components/CustomFooter.vue";
 
 export default {
-  title: 'CustomFooter',
+  title: "CustomFooter",
   component: CustomFooter
 };
 
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { CustomFooter },
-  template: '<custom-footer v-bind="$props" />',
+  template: '<custom-footer v-bind="$props" />'
 });
 
 export const DefaultCustomFooter = Template.bind({});

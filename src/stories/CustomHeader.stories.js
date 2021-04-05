@@ -1,14 +1,14 @@
-import CustomHeader from '../components/CustomHeader.vue';
+import CustomHeader from "../components/CustomHeader.vue";
 
 export default {
-  title: 'CustomHeader',
+  title: "CustomHeader",
   component: CustomHeader
 };
 
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { CustomHeader },
-  template: '<custom-header v-bind="$props" />',
+  template: '<custom-header v-bind="$props" />'
 });
 
 export const DefaultCustomHeader = Template.bind({});
