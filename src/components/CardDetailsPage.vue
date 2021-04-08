@@ -15,10 +15,10 @@
     <film-detail-card :card="card" />
     <div class="result_control">
       <div class="bold_span col-4 text-center">
-        <span>{{ films_by }} {{ card.genre }} {{ by_genre }}</span>
+        <span>{{ films_by }} {{ randomGenre }} {{ by_genre }}</span>
       </div>
     </div>
-    <film-gallery :cards="cards_by_genre" />
+    <film-gallery :cards="filmsByGenre" />
     <custom-footer :company_name="company_name" :app_name="app_name" />
   </div>
 </template>
@@ -30,7 +30,9 @@ import FilmDetailCard from "./FilmDetailCard.vue";
 import FilmGallery from "./FilmGallery.vue";
 import Logo from "./Logo.vue";
 import { EventBus } from "../event-bus";
-import { PROGRAM_DATA, I18N, MOCK_DATA } from "../core/constants";
+import { PROGRAM_DATA, I18N } from "../core/constants";
+import { GETTERS_KEYS } from "../core/store";
+import { getRandomGenre } from "../utils";
 export default {
   components: { Logo, FilmDetailCard, FilmGallery, CustomFooter },
   props: {
@@ -40,7 +42,6 @@ export default {
     return {
       company_name: I18N["EN"].COMPANY_NAME,
       app_name: I18N["EN"].APP_NAME,
-      cards_by_genre: [],
       padding_left_logo: 30,
       margin_left_logo: 35,
       films_by: I18N["EN"].FILMS_BY,
@@ -52,11 +53,14 @@ export default {
       EventBus.$emit(PROGRAM_DATA.EVENTS.CHANGE_PAGE_TO_SEARCH);
     }
   },
-  created: function() {
-    if (this.card.genre) {
-      this.cards_by_genre = MOCK_DATA.CARDS;
-    } else {
-      this.cards_by_genre = [];
+  computed: {
+    randomGenre() {
+      return getRandomGenre(this.$store.getters[GETTERS_KEYS.GET_ALL_GENRES]);
+    },
+    filmsByGenre() {
+      return this.$store.getters[GETTERS_KEYS.FIND_FILMS_BY_GENRE](
+        this.randomGenre
+      );
     }
   }
 };

@@ -15,6 +15,7 @@
           :second_option="second_option"
           :second_option_value="second_option_value"
           :options_name="options_name"
+          @changeOption="changeSortOption"
         />
       </div>
     </div>
@@ -25,6 +26,7 @@
 import "../assets/resultControl.css";
 import RadioChoose from "./RadioChoose.vue";
 import { I18N } from "../core/constants";
+import { MUTATIONS_KEYS } from "../core/store";
 export default {
   name: "ResultControl",
   components: { RadioChoose },
@@ -55,6 +57,15 @@ export default {
     return {
       movies_found: I18N["EN"].MOVIES_FOUND
     };
+  },
+  created() {
+    this.$store.commit(MUTATIONS_KEYS.SET_SORT_OPTION, this.first_option_value);
+  },
+  methods: {
+    changeSortOption: function(value) {
+      this.$store.commit(MUTATIONS_KEYS.SET_SORT_OPTION, value);
+      this.$store.commit(MUTATIONS_KEYS.SORT_SEARCH_FILMS);
+    }
   }
 };
 </script>
