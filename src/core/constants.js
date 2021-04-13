@@ -9,7 +9,7 @@ const PROGRAM_DATA = {
     GET_MOVIES_BY_OPTION: "getMoviesByOption",
     GET_MOVIES: "getMovies",
     INPUT_CHANGE: "inputChange",
-    CHANGE_SEARCH_BY: "changeSearchBy"
+    CHANGE_OPTION: "changeOption"
   }
 };
 
@@ -53,11 +53,26 @@ const MOCK_DATA = {
       genre: "Oscar winning Movie",
       releaseDate: 1994,
       duration: 178,
-      rate: 4.5,
-      description:
+      vote_average: 4.5,
+      overview:
         "Pulp Fiction is a 1994 American neo-noir black comedy crime film written and directed by Quentin Tarantino, who conceived it with Roger Avary. Starring John Travolta, Samuel L. Jackson, Bruce Willis, Tim Roth, Ving Rhames, and Uma Thurman, it tells several stories of criminal Los Angeles. The title refers to the pulp magazines and hardboiled crime novels popular during the mid-20th century, known for their graphic violence and punchy dialogue."
     }
   ]
 };
 
-export { PROGRAM_DATA, APP_DATA, I18N, MOCK_DATA };
+const FILM_KEYS = {
+  ID: "id",
+  TITLE: "title",
+  TAGLINE: "tagline",
+  VOTE_AVERAGE: "vote_average",
+  VOTE_COUNT: "vote_count",
+  REALESE_DATE: "release_date",
+  POSTER_PATH: "poster_path",
+  OVERVIEW: "overview",
+  BUDGET: "budget",
+  REVENUE: "revenue",
+  GENRES: "genres",
+  RUNTIME: "runtime"
+};
+
+export { PROGRAM_DATA, APP_DATA, I18N, MOCK_DATA, FILM_KEYS };

@@ -11,6 +11,7 @@ import CardDetailsPage from "./components/CardDetailsPage.vue";
 import SearchPage from "./components/SearchPage.vue";
 import { EventBus } from "./event-bus";
 import { PROGRAM_DATA } from "./core/constants";
+
 export default {
   name: "App",
   components: {

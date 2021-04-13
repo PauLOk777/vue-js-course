@@ -5,6 +5,7 @@
       :placeholder="placeholder_text"
       :style="`width: ${width_percentage}%`"
       @input="onChange"
+      @keyup.enter="getMovies"
       v-model="current_value"
     />
   </div>
@@ -25,6 +26,9 @@ export default {
   methods: {
     onChange: function() {
       this.$emit(PROGRAM_DATA.EVENTS.INPUT_CHANGE, this.current_value);
+    },
+    getMovies: function() {
+      this.$emit(PROGRAM_DATA.EVENTS.GET_MOVIES);
     }
   },
   data() {

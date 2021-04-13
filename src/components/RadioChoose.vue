@@ -60,7 +60,7 @@ export default {
       }
     },
     changeValue: function(value) {
-      this.$emit(PROGRAM_DATA.EVENTS.CHANGE_SEARCH_BY, value);
+      this.$emit(PROGRAM_DATA.EVENTS.CHANGE_OPTION, value);
     }
   }
 };
