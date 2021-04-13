@@ -9,7 +9,8 @@ const PROGRAM_DATA = {
     GET_MOVIES_BY_OPTION: "getMoviesByOption",
     GET_MOVIES: "getMovies",
     INPUT_CHANGE: "inputChange",
-    CHANGE_OPTION: "changeOption"
+    CHANGE_OPTION: "changeOption",
+    LOAD_MORE: "loadMore"
   }
 };
 
@@ -19,7 +20,8 @@ const APP_DATA = {
   SORT_BY: "sort_by",
   TITLE_VALUE: "title",
   GENRE_VALUE: "genre",
-  SEARCH_BY: "search_by"
+  SEARCH_BY: "search_by",
+  CARDS_PER_PAGE: 3
 };
 
 const I18N = {
@@ -39,7 +41,9 @@ const I18N = {
     YEAR: "year",
     MINUTES_SHORT: "min",
     FILMS_BY: "Films by",
-    BY_GENRE: "genre"
+    BY_GENRE: "genre",
+    UNKNOWN: "unknown",
+    LOAD_MORE: "LOAD MORE"
   }
 };
 
@@ -75,4 +79,11 @@ const FILM_KEYS = {
   RUNTIME: "runtime"
 };
 
-export { PROGRAM_DATA, APP_DATA, I18N, MOCK_DATA, FILM_KEYS };
+const FILTERS = {
+  PARSE_YEAR_FROM_DATE: "parseYearFromDate",
+  GET_RANDOM_GENRE: "getRandomGenre",
+  JOIN_GENRES: "joinGenres",
+  PARSE_DURATION: "parseDuration"
+};
+
+export { PROGRAM_DATA, APP_DATA, I18N, MOCK_DATA, FILM_KEYS, FILTERS };

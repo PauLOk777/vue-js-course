@@ -20,7 +20,7 @@ import CustomFooter from "./CustomFooter.vue";
 import FilmGallery from "./FilmGallery.vue";
 import ResultControl from "./ResultControl.vue";
 import { I18N, APP_DATA } from "../core/constants";
-import { STATE_KEYS, GETTERS_KEYS } from "../core/store";
+import { GETTERS_KEYS } from "../core/store";
 export default {
   name: "SearchPage",
   components: {
@@ -42,7 +42,7 @@ export default {
   },
   computed: {
     cards() {
-      return this.$store.state[STATE_KEYS.SEARCH_FILMS];
+      return this.$store.getters[GETTERS_KEYS.GET_NUMBER_OF_CARDS_ON_PAGE];
     },
     numberOfMovies() {
       return this.$store.getters[GETTERS_KEYS.FILMS_COUNT];

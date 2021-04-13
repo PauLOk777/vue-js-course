@@ -16,17 +16,17 @@
           </div>
         </div>
         <div class="row p-1">
-          <p class="card-detail-text small">{{ genres }}</p>
+          <p class="card-detail-text small">{{ card.genres | joinGenres }}</p>
         </div>
         <div class="row p-1">
           <div class="pr-3">
-            <span class="key_numbers">{{ parsedYear }} </span>
+            <span class="key_numbers"
+              >{{ card.release_date | parseYearFromDate }}
+            </span>
             <span class="small">{{ year }}</span>
           </div>
           <div class="pl-3">
-            <span class="key_numbers"
-              >{{ card.runtime == null ? "unknown" : card.runtime }}
-            </span>
+            <span class="key_numbers">{{ card.runtime | parseDuration }} </span>
             <span class="small">{{ minutes }}</span>
           </div>
         </div>
@@ -43,7 +43,6 @@
 <script>
 import "../assets/filmDetailCard.css";
 import { I18N } from "../core/constants";
-import { getYearFromDate, joinGenres } from "../utils";
 export default {
   name: "FilmDetailCard",
   props: {
@@ -56,14 +55,6 @@ export default {
       year: I18N["EN"].YEAR,
       minutes: I18N["EN"].MINUTES_SHORT
     };
-  },
-  computed: {
-    genres() {
-      return joinGenres(this.card.genres);
-    },
-    parsedYear() {
-      return getYearFromDate(this.card.release_date);
-    }
   }
 };
 </script>

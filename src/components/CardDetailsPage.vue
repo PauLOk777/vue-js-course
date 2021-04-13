@@ -30,9 +30,8 @@ import FilmDetailCard from "./FilmDetailCard.vue";
 import FilmGallery from "./FilmGallery.vue";
 import Logo from "./Logo.vue";
 import { EventBus } from "../event-bus";
-import { PROGRAM_DATA, I18N } from "../core/constants";
-import { GETTERS_KEYS } from "../core/store";
-import { getRandomGenre } from "../utils";
+import { PROGRAM_DATA, I18N, FILTERS } from "../core/constants";
+import { GETTERS_KEYS, MUTATIONS_KEYS } from "../core/store";
 export default {
   components: { Logo, FilmDetailCard, FilmGallery, CustomFooter },
   props: {
@@ -55,12 +54,13 @@ export default {
   },
   computed: {
     randomGenre() {
-      return getRandomGenre(this.$store.getters[GETTERS_KEYS.GET_ALL_GENRES]);
+      return this.$options.filters[FILTERS.GET_RANDOM_GENRE](
+        this.$store.getters[GETTERS_KEYS.GET_ALL_GENRES]
+      );
     },
     filmsByGenre() {
-      return this.$store.getters[GETTERS_KEYS.FIND_FILMS_BY_GENRE](
-        this.randomGenre
-      );
+      this.$store.commit(MUTATIONS_KEYS.FIND_FILMS_BY_GENRE, this.randomGenre);
+      return this.$store.getters[GETTERS_KEYS.GET_NUMBER_OF_CARDS_ON_PAGE];
     }
   }
 };
