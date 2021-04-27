@@ -19,8 +19,8 @@ import CustomHeader from "./CustomHeader.vue";
 import CustomFooter from "./CustomFooter.vue";
 import FilmGallery from "./FilmGallery.vue";
 import ResultControl from "./ResultControl.vue";
-import { I18N, APP_DATA } from "../core/constants";
-import { GETTERS_KEYS } from "../core/store";
+import { I18N, APP_DATA, FILM_KEYS } from "../core/constants";
+import { GETTERS_KEYS, STATE_KEYS } from "../core/store";
 export default {
   name: "SearchPage",
   components: {
@@ -32,9 +32,9 @@ export default {
   data() {
     return {
       realesed_date_text: I18N["EN"].REALEASED_DATE,
-      realesed_date_value: APP_DATA.REALESED_DATE_VALUE,
+      realesed_date_value: FILM_KEYS.REALESE_DATE,
       rating_text: I18N["EN"].RATING,
-      rating_value: APP_DATA.RATING_VALUE,
+      rating_value: FILM_KEYS.VOTE_AVERAGE,
       sort_by: APP_DATA.SORT_BY,
       company_name: I18N["EN"].COMPANY_NAME,
       app_name: I18N["EN"].APP_NAME
@@ -42,10 +42,10 @@ export default {
   },
   computed: {
     cards() {
-      return this.$store.getters[GETTERS_KEYS.GET_NUMBER_OF_CARDS_ON_PAGE];
+      return this.$store.getters[GETTERS_KEYS.GET_CARDS_ON_PAGE];
     },
     numberOfMovies() {
-      return this.$store.getters[GETTERS_KEYS.FILMS_COUNT];
+      return this.$store.state[STATE_KEYS.FILMS_COUNT];
     }
   }
 };

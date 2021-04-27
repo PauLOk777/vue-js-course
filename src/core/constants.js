@@ -19,9 +19,11 @@ const APP_DATA = {
   RATING_VALUE: "rating",
   SORT_BY: "sort_by",
   TITLE_VALUE: "title",
-  GENRE_VALUE: "genre",
+  GENRE_VALUE: "genres",
   SEARCH_BY: "search_by",
-  CARDS_PER_PAGE: 3
+  CARDS_PER_PAGE: 3,
+  ASC: "asc",
+  DESC: "desc"
 };
 
 const I18N = {
@@ -86,4 +88,20 @@ const FILTERS = {
   PARSE_DURATION: "parseDuration"
 };
 
-export { PROGRAM_DATA, APP_DATA, I18N, MOCK_DATA, FILM_KEYS, FILTERS };
+const API = {
+  BASE_URI: "https://react-cdp-api.herokuapp.com/",
+  MOVIES: "movies/",
+  PATH_PARAM_ID: "{id}",
+  MOVIES_BY_ID: "movies/{id}",
+  KEYS: {
+    SORT_BY: "sortBy",
+    SORT_ORDER: "sortOrder",
+    SEARCH: "search",
+    SEARCH_BY: "searchBy",
+    FILTER: "filter",
+    OFFSET: "offset",
+    LIMIT: "limit"
+  }
+};
+
+export { PROGRAM_DATA, APP_DATA, I18N, MOCK_DATA, FILM_KEYS, FILTERS, API };

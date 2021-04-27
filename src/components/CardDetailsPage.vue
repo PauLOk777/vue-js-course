@@ -30,8 +30,16 @@ import FilmDetailCard from "./FilmDetailCard.vue";
 import FilmGallery from "./FilmGallery.vue";
 import Logo from "./Logo.vue";
 import { EventBus } from "../event-bus";
-import { PROGRAM_DATA, I18N, FILTERS } from "../core/constants";
-import { GETTERS_KEYS, MUTATIONS_KEYS } from "../core/store";
+import {
+  PROGRAM_DATA,
+  I18N,
+  FILTERS,
+  FILM_KEYS,
+  APP_DATA,
+  API
+} from "../core/constants";
+import { STATE_KEYS } from "../core/store";
+import ApiService from "../core/api";
 export default {
   components: { Logo, FilmDetailCard, FilmGallery, CustomFooter },
   props: {
@@ -44,23 +52,30 @@ export default {
       padding_left_logo: 30,
       margin_left_logo: 35,
       films_by: I18N["EN"].FILMS_BY,
-      by_genre: I18N["EN"].BY_GENRE
+      by_genre: I18N["EN"].BY_GENRE,
+      filmsByGenre: [],
+      randomGenre: this.$options.filters[FILTERS.GET_RANDOM_GENRE](
+        this.card[FILM_KEYS.GENRES]
+      )
     };
+  },
+  created() {
+    const params = {
+      [API.KEYS.SORT_BY]: this.$store.state[STATE_KEYS.SORT_OPTION],
+      [API.KEYS.SORT_ORDER]: this.$store.state[STATE_KEYS.SORT_ORDER],
+      [API.KEYS.SEARCH]: this.randomGenre,
+      [API.KEYS.SEARCH_BY]: FILM_KEYS.GENRES,
+      [API.KEYS.OFFSET]: 0,
+      [API.KEYS.LIMIT]: APP_DATA.CARDS_PER_PAGE
+    };
+
+    return ApiService.getMoviesByParameters(params).then(
+      info => (this.filmsByGenre = info.data)
+    );
   },
   methods: {
     getSearchPage: function() {
       EventBus.$emit(PROGRAM_DATA.EVENTS.CHANGE_PAGE_TO_SEARCH);
-    }
-  },
-  computed: {
-    randomGenre() {
-      return this.$options.filters[FILTERS.GET_RANDOM_GENRE](
-        this.$store.getters[GETTERS_KEYS.GET_ALL_GENRES]
-      );
-    },
-    filmsByGenre() {
-      this.$store.commit(MUTATIONS_KEYS.FIND_FILMS_BY_GENRE, this.randomGenre);
-      return this.$store.getters[GETTERS_KEYS.GET_NUMBER_OF_CARDS_ON_PAGE];
     }
   }
 };

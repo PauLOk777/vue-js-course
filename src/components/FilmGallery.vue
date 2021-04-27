@@ -13,7 +13,7 @@
       </div>
       <div class="load_more text-center">
         <load-more-button
-          v-if="!pageIsFullyLoaded"
+          v-if="!pageIsFullyLoaded && !isCardDetailsPage"
           @[loadMoreEvent]="loadMore"
           :text="loadMoreText"
         />
@@ -26,8 +26,8 @@
 import "../assets/filmGallery.css";
 import FilmCard from "./FilmCard.vue";
 import LoadMoreButton from "./LoadMoreButton.vue";
-import { PROGRAM_DATA, APP_DATA, I18N } from "../core/constants";
-import { STATE_KEYS, GETTERS_KEYS, MUTATIONS_KEYS } from "../core/store";
+import { PROGRAM_DATA, I18N } from "../core/constants";
+import { STATE_KEYS, ACTION_KEYS } from "../core/store";
 export default {
   name: "FilmGallery",
   components: { FilmCard, LoadMoreButton },
@@ -37,38 +37,27 @@ export default {
   data() {
     return {
       no_films: I18N["EN"].NO_FILMS,
-      loadMoreEvent: PROGRAM_DATA.EVENTS.LOAD_MORE
+      loadMoreEvent: PROGRAM_DATA.EVENTS.LOAD_MORE,
+      loadMoreText: I18N.EN.LOAD_MORE
     };
-  },
-  created() {
-    this.$store.commit(
-      MUTATIONS_KEYS.SET_NUMBER_OF_CARDS_ON_PAGE,
-      APP_DATA.CARDS_PER_PAGE
-    );
-    this.$store.commit(MUTATIONS_KEYS.SET_SEARCH_FILMS, []);
   },
   methods: {
     loadMore: function() {
-      let numberOfCardsOnPage =
-        this.$store.state[STATE_KEYS.NUMBER_OF_CARDS_ON_PAGE] +
-        APP_DATA.CARDS_PER_PAGE;
-      numberOfCardsOnPage = Math.min(
-        numberOfCardsOnPage,
-        this.$store.getters[GETTERS_KEYS.FILMS_COUNT]
-      );
-
-      this.$store.commit(
-        MUTATIONS_KEYS.SET_NUMBER_OF_CARDS_ON_PAGE,
-        numberOfCardsOnPage
-      );
+      this.$store.dispatch(ACTION_KEYS.LOAD_MORE);
     }
   },
   computed: {
     pageIsFullyLoaded() {
-      return this.$store.getters[GETTERS_KEYS.PAGE_IS_FULLY_LOADED];
+      return (
+        this.$store.state[STATE_KEYS.NUMBER_OF_CARDS_ON_PAGE] >=
+        this.$store.state[STATE_KEYS.FILMS_COUNT]
+      );
     },
-    loadMoreText() {
-      return I18N.EN.LOAD_MORE;
+    isCardDetailsPage() {
+      return (
+        this.$store.state[STATE_KEYS.CURRENT_PAGE] ===
+        PROGRAM_DATA.PAGES.CARD_DETAILS_PAGE
+      );
     }
   }
 };
