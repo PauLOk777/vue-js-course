@@ -26,7 +26,7 @@
 import "../assets/resultControl.css";
 import RadioChoose from "./RadioChoose.vue";
 import { I18N } from "../core/constants";
-import { MUTATIONS_KEYS } from "../core/store";
+import { ACTION_KEYS, MUTATIONS_KEYS } from "../core/store";
 export default {
   name: "ResultControl",
   components: { RadioChoose },
@@ -64,7 +64,7 @@ export default {
   methods: {
     changeSortOption: function(value) {
       this.$store.commit(MUTATIONS_KEYS.SET_SORT_OPTION, value);
-      this.$store.commit(MUTATIONS_KEYS.SORT_SEARCH_FILMS);
+      this.$store.dispatch(ACTION_KEYS.SEARCH_FILMS);
     }
   }
 };

@@ -25,6 +25,7 @@
 import "../assets/filmCard.css";
 import { EventBus } from "../event-bus";
 import { PROGRAM_DATA } from "../core/constants";
+import ApiService from "../core/api";
 export default {
   name: "FilmCard",
   props: {
@@ -32,9 +33,8 @@ export default {
   },
   methods: {
     getCardDetailsPage: function() {
-      EventBus.$emit(
-        PROGRAM_DATA.EVENTS.CHANGE_PAGE_TO_CART_DETAILS,
-        this.card
+      ApiService.getMovieById(this.card.id).then(film =>
+        EventBus.$emit(PROGRAM_DATA.EVENTS.CHANGE_PAGE_TO_CART_DETAILS, film)
       );
     }
   }

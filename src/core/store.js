@@ -1,30 +1,33 @@
 const STATE_KEYS = {
-  FILMS: "films",
+  CURRENT_PAGE: "current_page",
   SEARCH_FILMS: "search_films",
   SEARCH_CRITERIA: "search_criteria",
   SORT_OPTION: "sort_option",
-  NUMBER_OF_CARDS_ON_PAGE: "number_of_cards_on_page"
+  SORT_ORDER: "sort_order",
+  SEARCH_TEXT: "searchText",
+  NUMBER_OF_CARDS_ON_PAGE: "number_of_cards_on_page",
+  FILMS_COUNT: "films_count"
 };
 
 const GETTERS_KEYS = {
-  GET_NUMBER_OF_CARDS_ON_PAGE: "getNumberOfCardsOnPage",
-  FILMS_COUNT: "filmsCount",
-  FIND_FILM_BY_ID: "findFilmById",
-  GET_ALL_GENRES: "getAllGenres",
-  PAGE_IS_FULLY_LOADED: "pageIsFullyLoaded"
+  GET_CARDS_ON_PAGE: "getCardsOnPage"
 };
 
 const MUTATIONS_KEYS = {
+  SET_CURRENT_PAGE: "setCurrentPage",
   SET_SEARCH_CRITERIA: "setSearchCriteria",
   SET_SORT_OPTION: "setSortOption",
+  SET_SEARCH_TEXT: "setSearchText",
   SET_SEARCH_FILMS: "setSearchFilms",
   SET_NUMBER_OF_CARDS_ON_PAGE: "setNumberOfCardsOnPage",
-  FIND_FILMS_BY_GENRE: "findFilmsByGenre",
-  SORT_SEARCH_FILMS: "sortSeachFilms"
+  SET_FILMS_COUNT: "setFilmsCount",
+  ADD_FILMS: "addFilms"
 };
 
 const ACTION_KEYS = {
-  SEARCH_FILMS: "searchFilms"
+  SEARCH_FILMS: "searchFilms",
+  LOAD_MOVIES: "loadMovies",
+  LOAD_MORE: "loadMore"
 };
 
 export { STATE_KEYS, GETTERS_KEYS, MUTATIONS_KEYS, ACTION_KEYS };

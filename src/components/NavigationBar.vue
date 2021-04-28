@@ -66,7 +66,8 @@ export default {
   },
   methods: {
     getMoviesByOption: function() {
-      this.$store.dispatch(ACTION_KEYS.SEARCH_FILMS, this.input);
+      this.$store.commit(MUTATIONS_KEYS.SET_SEARCH_TEXT, this.input);
+      this.$store.dispatch(ACTION_KEYS.SEARCH_FILMS);
     },
     changeSearchBy: function(value) {
       this.$store.commit(MUTATIONS_KEYS.SET_SEARCH_CRITERIA, value);
