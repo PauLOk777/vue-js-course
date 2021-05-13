@@ -1,11 +1,5 @@
 const PROGRAM_DATA = {
-  PAGES: {
-    SEARCH_PAGE: "search-page",
-    CARD_DETAILS_PAGE: "card-details-page"
-  },
   EVENTS: {
-    CHANGE_PAGE_TO_SEARCH: "changeToSearchPage",
-    CHANGE_PAGE_TO_CART_DETAILS: "changePageToCardDetails",
     GET_MOVIES_BY_OPTION: "getMoviesByOption",
     GET_MOVIES: "getMovies",
     INPUT_CHANGE: "inputChange",
@@ -45,7 +39,8 @@ const I18N = {
     FILMS_BY: "Films by",
     BY_GENRE: "genre",
     UNKNOWN: "unknown",
-    LOAD_MORE: "LOAD MORE"
+    LOAD_MORE: "LOAD MORE",
+    FIND_MOVIES: "Find movies"
   }
 };
 

@@ -1,0 +1,11 @@
+.find-movies-text {
+  font-size: 24px;
+}
+
+.find-movies-text > a {
+    color: black;
+}
+
+.find-movies-text > a:hover {
+    color: gray;
+}

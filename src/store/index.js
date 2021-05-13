@@ -7,13 +7,12 @@ import {
   MUTATIONS_KEYS,
   ACTION_KEYS
 } from "../core/store";
-import { PROGRAM_DATA, APP_DATA, API } from "../core/constants";
+import { APP_DATA, API } from "../core/constants";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    [STATE_KEYS.CURRENT_PAGE]: PROGRAM_DATA.PAGES.SEARCH_PAGE,
     [STATE_KEYS.SEARCH_FILMS]: [],
     [STATE_KEYS.SEARCH_CRITERIA]: "",
     [STATE_KEYS.SORT_OPTION]: "",
@@ -33,10 +32,6 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    [MUTATIONS_KEYS.SET_CURRENT_PAGE]: function(state, page) {
-      state[STATE_KEYS.CURRENT_PAGE] = page;
-    },
-
     [MUTATIONS_KEYS.SET_SEARCH_CRITERIA]: function(state, searchCriteria) {
       state[STATE_KEYS.SEARCH_CRITERIA] = searchCriteria;
     },

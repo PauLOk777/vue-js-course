@@ -9,10 +9,12 @@
         "
       />
       <div class="glyphicon text-right align-self-center">
-        <a href="#" @click="getSearchPage">X</a>
+        <router-link :to="movies_path">
+          <span>X</span>
+        </router-link>
       </div>
     </div>
-    <film-detail-card :card="card" />
+    <film-detail-card v-if="card.genres != undefined" :card="card" />
     <div class="result_control">
       <div class="bold_span col-4 text-center">
         <span>{{ films_by }} {{ randomGenre }} {{ by_genre }}</span>
@@ -29,24 +31,23 @@ import CustomFooter from "./CustomFooter.vue";
 import FilmDetailCard from "./FilmDetailCard.vue";
 import FilmGallery from "./FilmGallery.vue";
 import Logo from "./Logo.vue";
-import { EventBus } from "../event-bus";
-import {
-  PROGRAM_DATA,
-  I18N,
-  FILTERS,
-  FILM_KEYS,
-  APP_DATA,
-  API
-} from "../core/constants";
+import { I18N, FILTERS, FILM_KEYS, APP_DATA, API } from "../core/constants";
 import { STATE_KEYS } from "../core/store";
 import ApiService from "../core/api";
+import { ROUTES_PATHS } from "../core/router";
 export default {
   components: { Logo, FilmDetailCard, FilmGallery, CustomFooter },
   props: {
-    card: Object
+    id: String
+  },
+  watch: {
+    id: function(newId) {
+      this.loadCard(+newId);
+    }
   },
   data() {
     return {
+      movies_path: ROUTES_PATHS.MOVIES,
       company_name: I18N["EN"].COMPANY_NAME,
       app_name: I18N["EN"].APP_NAME,
       padding_left_logo: 30,
@@ -54,28 +55,35 @@ export default {
       films_by: I18N["EN"].FILMS_BY,
       by_genre: I18N["EN"].BY_GENRE,
       filmsByGenre: [],
-      randomGenre: this.$options.filters[FILTERS.GET_RANDOM_GENRE](
-        this.card[FILM_KEYS.GENRES]
-      )
+      card: {},
+      randomGenre: ""
     };
   },
   created() {
-    const params = {
-      [API.KEYS.SORT_BY]: this.$store.state[STATE_KEYS.SORT_OPTION],
-      [API.KEYS.SORT_ORDER]: this.$store.state[STATE_KEYS.SORT_ORDER],
-      [API.KEYS.SEARCH]: this.randomGenre,
-      [API.KEYS.SEARCH_BY]: FILM_KEYS.GENRES,
-      [API.KEYS.OFFSET]: 0,
-      [API.KEYS.LIMIT]: APP_DATA.CARDS_PER_PAGE
-    };
-
-    return ApiService.getMoviesByParameters(params).then(
-      info => (this.filmsByGenre = info.data)
-    );
+    this.loadCard(+this.id);
   },
   methods: {
-    getSearchPage: function() {
-      EventBus.$emit(PROGRAM_DATA.EVENTS.CHANGE_PAGE_TO_SEARCH);
+    loadCard(id) {
+      const params = {
+        [API.KEYS.SORT_BY]: this.$store.state[STATE_KEYS.SORT_OPTION],
+        [API.KEYS.SORT_ORDER]: this.$store.state[STATE_KEYS.SORT_ORDER],
+        [API.KEYS.SEARCH]: this.randomGenre,
+        [API.KEYS.SEARCH_BY]: FILM_KEYS.GENRES,
+        [API.KEYS.OFFSET]: 0,
+        [API.KEYS.LIMIT]: APP_DATA.CARDS_PER_PAGE
+      };
+
+      ApiService.getMovieById(id)
+        .then(film => (this.card = film))
+        .then(() => {
+          this.randomGenre = this.$options.filters[FILTERS.GET_RANDOM_GENRE](
+            this.card[FILM_KEYS.GENRES]
+          );
+        });
+
+      ApiService.getMoviesByParameters(params).then(
+        info => (this.filmsByGenre = info.data)
+      );
     }
   }
 };

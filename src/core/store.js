@@ -1,5 +1,4 @@
 const STATE_KEYS = {
-  CURRENT_PAGE: "current_page",
   SEARCH_FILMS: "search_films",
   SEARCH_CRITERIA: "search_criteria",
   SORT_OPTION: "sort_option",
@@ -14,7 +13,6 @@ const GETTERS_KEYS = {
 };
 
 const MUTATIONS_KEYS = {
-  SET_CURRENT_PAGE: "setCurrentPage",
   SET_SEARCH_CRITERIA: "setSearchCriteria",
   SET_SORT_OPTION: "setSortOption",
   SET_SEARCH_TEXT: "setSearchText",
