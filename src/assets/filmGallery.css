@@ -14,3 +14,7 @@
   transform: translate(-50%, -50%);
   font-size: 32px;
 }
+
+.load_more {
+  padding-bottom: 50px;
+}

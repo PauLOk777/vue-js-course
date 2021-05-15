@@ -17,9 +17,9 @@ PulpFiction.args = {
   title: "Pulp Fiction",
   genre: "Oscar winning Movie",
   releaseDate: 1994,
-  rate: 4.5,
+  vote_average: 4.5,
   duration: 178,
-  description:
+  overview:
     "Pulp Fiction is a 1994 American neo-noir black comedy crime film written and directed by Quentin " +
     "Tarantino, who conceived it with Roger Avary. Starring John Travolta, Samuel L. Jackson, Bruce " +
     "Willis, Tim Roth, Ving Rhames, and Uma Thurman, it tells several stories of criminal Los Angeles. The " +

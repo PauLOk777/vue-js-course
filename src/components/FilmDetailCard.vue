@@ -1,7 +1,7 @@
 <template>
   <div class="card-details">
     <div class="col-4 d-inline-block">
-      <img :src="card.imageUrl" class="card-img" />
+      <img :src="card.poster_path" class="card-img" />
     </div>
     <div class="col-8 d-inline-block">
       <div class="card-body">
@@ -11,26 +11,28 @@
           </div>
           <div class="text-center">
             <span class="border rounded-circle p-2 h1 rating-text">
-              {{ card.rate }}
+              {{ card.vote_average }}
             </span>
           </div>
         </div>
         <div class="row p-1">
-          <p class="card-detail-text small">{{ card.genre }}</p>
+          <p class="card-detail-text small">{{ card.genres | joinGenres }}</p>
         </div>
         <div class="row p-1">
           <div class="pr-3">
-            <span class="key_numbers">{{ card.releaseDate }} </span>
+            <span class="key_numbers"
+              >{{ card.release_date | parseYearFromDate }}
+            </span>
             <span class="small">{{ year }}</span>
           </div>
           <div class="pl-3">
-            <span class="key_numbers">{{ card.duration }} </span>
+            <span class="key_numbers">{{ card.runtime | parseDuration }} </span>
             <span class="small">{{ minutes }}</span>
           </div>
         </div>
         <div class="row p-1">
           <p class="card-detail-text">
-            {{ card.description }}
+            {{ card.overview }}
           </p>
         </div>
       </div>
@@ -44,7 +46,9 @@ import { I18N } from "../core/constants";
 export default {
   name: "FilmDetailCard",
   props: {
-    card: Object
+    card: {
+      type: Object
+    }
   },
   data() {
     return {
