@@ -7,7 +7,9 @@
       <div class="container">
         <div class="row">
           <div class="col-md-4" v-for="card in cards" :key="card.title">
-            <film-card class="mb-4" :card="card" />
+            <router-link :to="createLinkForCard(card.id)">
+              <film-card class="mb-4" :card="card" />
+            </router-link>
           </div>
         </div>
       </div>
@@ -28,6 +30,7 @@ import FilmCard from "./FilmCard.vue";
 import LoadMoreButton from "./LoadMoreButton.vue";
 import { PROGRAM_DATA, I18N } from "../core/constants";
 import { STATE_KEYS, ACTION_KEYS } from "../core/store";
+import { ROUTES_PATHS, ROUTES_NAMES } from "../core/router";
 export default {
   name: "FilmGallery",
   components: { FilmCard, LoadMoreButton },
@@ -44,6 +47,9 @@ export default {
   methods: {
     loadMore: function() {
       this.$store.dispatch(ACTION_KEYS.LOAD_MORE);
+    },
+    createLinkForCard: function(id) {
+      return ROUTES_PATHS.MOVIES + "/" + id;
     }
   },
   computed: {
@@ -54,10 +60,7 @@ export default {
       );
     },
     isCardDetailsPage() {
-      return (
-        this.$store.state[STATE_KEYS.CURRENT_PAGE] ===
-        PROGRAM_DATA.PAGES.CARD_DETAILS_PAGE
-      );
+      return this.$route.name === ROUTES_NAMES.MOVIE_BY_ID;
     }
   }
 };
